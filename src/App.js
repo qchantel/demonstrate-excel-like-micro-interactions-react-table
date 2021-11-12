@@ -225,16 +225,24 @@ function App() {
             multiple cells
           </li>
           <li>Or keep mouse clicked to select multiple cells</li>
+          <li>
+            You can copy/paste data from and to spreadsheet (excel, google
+            spreadsheet, ...)
+          </li>
+          <li>
+            Pasting data into the table is not handled but you can see a parser
+            example below
+          </li>
         </ul>
       </p>
-      <p>
-        <h3>Clipboard copied data</h3>
-        <pre>{clipboardData}</pre>
-      </p>
-      <p>
-        <h3>Clipboard pasted data</h3>
-        <pre>{pastedData}</pre>
-      </p>
+      <br />
+      <b>Clipboard copied data</b>
+      <pre>{clipboardData}</pre>
+      <br />
+      <br />
+      <b>Clipboard pasted data</b>
+      <pre>{pastedData}</pre>
+      <br />
     </div>
   );
 }
