@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { tabData } from "./mockData";
 
 import "./index.css";
@@ -68,26 +68,32 @@ function App() {
     mouseDown && setSelectedIds({ ...selectedIds, [id]: true });
   };
 
-  const deleteCells = (selectedIds) => {
-    const newTable = updateTableData(tableData, selectedIds);
-    setTableData(newTable);
-  };
+  const deleteCells = useCallback(
+    (selectedIds) => {
+      const newTable = updateTableData(tableData, selectedIds);
+      setTableData(newTable);
+    },
+    [tableData]
+  );
 
-  function handleCopy(event) {
-    const ids = getValuesFromIds(
-      Object.keys(selectedIds),
-      tableData,
-      "first_name"
-    );
+  const handleCopy = useCallback(
+    (event) => {
+      const ids = getValuesFromIds(
+        Object.keys(selectedIds),
+        tableData,
+        "first_name"
+      );
 
-    console.log({ ids });
-    const formattedData = transformArrayToExcelLikeParsing(ids);
+      console.log({ ids });
+      const formattedData = transformArrayToExcelLikeParsing(ids);
 
-    event.clipboardData.setData("text/plain", formattedData);
-    setClipboardData(preDataFormat(formattedData));
+      event.clipboardData.setData("text/plain", formattedData);
+      setClipboardData(preDataFormat(formattedData));
 
-    event.preventDefault();
-  }
+      event.preventDefault();
+    },
+    [selectedIds, tableData]
+  );
 
   function preDataFormat(data) {
     return (
@@ -112,7 +118,7 @@ function App() {
     return string.trim();
   }
 
-  function handlePaste(e) {
+  const handlePaste = useCallback((e) => {
     var clipboardData, pastedData;
 
     // Stop data actually being pasted into div
@@ -125,7 +131,7 @@ function App() {
     pastedData = clipboardData.getData("Text");
     console.log({ pastedData });
     setPastedData(preDataFormat(pastedData));
-  }
+  }, []);
 
   useEffect(() => {
     window.onmousemove = function (e) {
@@ -151,7 +157,7 @@ function App() {
       handlePaste(event);
       event.preventDefault();
     });
-  }, []);
+  }, [handlePaste]);
 
   useEffect(() => {
     document.body.onkeydown = function (e) {
