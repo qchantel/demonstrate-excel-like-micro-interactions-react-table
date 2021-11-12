@@ -1,3 +1,5 @@
-Quick POC to demonstrate some spreadsheet like capabilities in a React HTMl table.
+A quick example of some excel like interactions in a react table (copy pasting, deleting, multiple selection)
+
+
 
 0 dependency
