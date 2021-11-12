@@ -217,24 +217,24 @@ function App() {
           })}
         </tbody>
       </table>
-      <p>
-        <ul>
-          <li>Press backspace to delete data</li>
-          <li>
-            Press CMD (MacOS) or CTRL (Windows/Linux) to select/deselect
-            multiple cells
-          </li>
-          <li>Or keep mouse clicked to select multiple cells</li>
-          <li>
-            You can copy/paste data from and to spreadsheet (excel, google
-            spreadsheet, ...)
-          </li>
-          <li>
-            Pasting data into the table is not handled but you can see a parser
-            example below
-          </li>
-        </ul>
-      </p>
+      <br />
+      <ul>
+        <li>Press backspace to delete data</li>
+        <li>
+          Press CMD (MacOS) or CTRL (Windows/Linux) to select/deselect multiple
+          cells
+        </li>
+        <li>Or keep mouse clicked to select multiple cells</li>
+        <li>
+          You can copy/paste data from and to spreadsheet (excel, google
+          spreadsheet, ...)
+        </li>
+        <li>
+          Pasting data into the table is not handled but you can see a parser
+          example below
+        </li>
+      </ul>
+      <br />
       <br />
       <b>Clipboard copied data</b>
       <pre>{clipboardData}</pre>
